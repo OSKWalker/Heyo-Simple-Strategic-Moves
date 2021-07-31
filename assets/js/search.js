@@ -1,7 +1,24 @@
+//ZIPCODE SEARCH
+fetch("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes=30043&country=US", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "",
+		"x-rapidapi-host": "zipcodebase-zip-code-search.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+
+
+//PROPERTY SEARCH
 fetch("https://us-real-estate.p.rapidapi.com/property-detail?property_id=1961921598", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "053d25221dmsh0bb7fb7b68fc3a4p1d74aajsn963047a10f6f",
+		"x-rapidapi-key": "",
 		"x-rapidapi-host": "us-real-estate.p.rapidapi.com"
 	}
 })
