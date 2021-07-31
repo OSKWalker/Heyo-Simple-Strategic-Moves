@@ -1,8 +1,39 @@
+//variable definitions
+let srch_zipcodeEl = document.getElementById("#zipcode");
+
+
+
+function getZipCode(event){
+
+    //handle event prop
+    
+    //get zipcode
+    let zipCode = event.value;
+    console.log(zipCode);
+};
+
+//add event listeners
+function srch_addEventListeners(){
+
+    srch_zipcodeEl.addEventListener("submit",getZipCode);
+
+};
+
+function srch_saveSearch(){
+
+};
+
+function srch_saveHomes(){
+
+};
+
+
+
 //ZIPCODE SEARCH
-fetch("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes=30043&country=US", {
+/*fetch("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes=30043&country=US", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "",
+		"x-rapidapi-key": "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b",
 		"x-rapidapi-host": "zipcodebase-zip-code-search.p.rapidapi.com"
 	}
 })
@@ -18,7 +49,7 @@ fetch("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes=30043&cou
 fetch("https://us-real-estate.p.rapidapi.com/property-detail?property_id=1961921598", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "",
+		"x-rapidapi-key": "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b",
 		"x-rapidapi-host": "us-real-estate.p.rapidapi.com"
 	}
 })
@@ -31,4 +62,4 @@ fetch("https://us-real-estate.p.rapidapi.com/property-detail?property_id=1961921
 })
 .catch(err => {
 	console.error(err);
-});
+});*/
