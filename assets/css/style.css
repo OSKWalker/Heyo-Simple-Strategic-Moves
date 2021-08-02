@@ -5,3 +5,11 @@
     width: 100%;
     /* The width is the width of the web page */
   }
+
+  .listing{
+    padding: 5px;
+    background-color: #ffffff;
+    border: 2px solid ;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 10px;
+  }

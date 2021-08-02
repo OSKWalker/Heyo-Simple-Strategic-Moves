@@ -1,11 +1,12 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heyo Strategic Move</title>
     <link rel="stylesheet" href="assets/foundations/css/foundation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
@@ -24,7 +25,7 @@
             <h5>Enter your new destination</h5>
             <form>
               <div class="grid-x grid-padding-x">
-                <div class="large-12 cell">
+                <div class="large-12 cell" >
                   <input type="text" placeholder="zipcode" id="zipcode"/>
                 </div>
               </div>
@@ -35,8 +36,9 @@
 
       <div class="grid-x grid-padding-x">
         <div class="large-6 medium-6 cell">
-          <div class="primary callout">
-            <p><strong> Search Results</strong></p>
+          <div class="primary callout" id="property-results">
+           
+            
           </div>
         </div>
 
@@ -46,17 +48,53 @@
         </div>
       </div>
 
-   
-  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-GOES-HERE]&callback=initMap&libraries=&v=weekly"
-  async
-></script>
+      <div class="modals"></div>
 
-<script src="assets/foundations/js/vendor.js"></script>
-<script src="assets/foundations/js/foundation.js"></script>
-<script src="assets/js/search.js"></script>
-<script src="assets/js/map.js"></script>
-<script src="assets/js/script.js"></script>
+      <!--- List Property Detail Modal-->
+
+
+      <h2>Reveal Modal in Modal Example</h2>
+      <p><a data-open="reveal_modal">Click here to open modal</a></p>
+
+      <div class = "reveal" id = "reveal_modal" data-reveal>
+         <h2>Foundation</h2>
+         <p>Foundation is a family of responsive front-end frameworks that make
+            it easy to design beautiful  responsive websites, apps and emails
+            that look amazing on any device.
+         </p>
+         <a class = "button" data-toggle = "reveal_modal1">Click here to open another modal!</a>
+
+         <button class = "close-button" data-close aria-label = "Close reveal" type = "button">
+            <span aria-hidden = "true">×</span>
+         </button>
+      </div>
+
+      <div class = "reveal" id = "reveal_modal1" data-reveal>
+         <h2>This is another modal!!!</h2>
+         <p>Foundation is semantic, readable, flexible, and completely customizable.</p>
+
+         <button class = "close-button" data-close aria-label = "Close reveal" type = "button">
+            <span aria-hidden = "true">×</span>
+         </button>
+      </div>
+  
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <script></script>
+
+
+
+  <script src="assets/foundations/vendor.js"></script>
+  <script src="assets/foundations/foundation.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/search.js"></script>
+
+
+
+  <script>
+      $(document).ready(function() {
+            $(document).foundation();
+         })
+  </script>
 </body>
 </html>
