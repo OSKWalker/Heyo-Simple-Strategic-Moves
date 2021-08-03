@@ -125,7 +125,12 @@ ul {
 .map {
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.35);
-    margin: 20px 20px 20px 20px;
+    margin: 0px 20px 20px 20px;
+    height: 700px;
+    width: 45%;
+    text-align: center;
+    font-size: 30px;
+    color: white;
 }
 
 .listcontainer {
@@ -134,12 +139,22 @@ ul {
     margin: 20px 20px 20px 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+}
+
+div #list {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 1rem;
+    width: 50%;
 }
 
 .list{
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.35);
-    margin: 20px 20px 20px 20px;
+    /* margin: 20px 20px 20px 20px; */
+    /* overflow: scroll;
+    height: 100px;
+    width: 100px; */
 }
 
 .menu {
@@ -152,4 +167,40 @@ ul {
 a {
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.35);
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.callout {
+    width: 750px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: report,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+
+}
+
+::-webkit-scrollbar {
+    width: 15px;             /* width of the entire scrollbar */
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(255,255,255,0.6);        /* color of the tracking area */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #22a69a;    /* color of the scroll thumb */
+    border-radius: 1rem;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(255,255,255,0.6);  /* creates padding around scroll thumb */
 }
