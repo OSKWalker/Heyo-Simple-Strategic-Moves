@@ -1,0 +1,101 @@
+.title {
+    font-family: dazzle-unicase, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #3f6db4;
+    font-size: 50px;
+}
+
+.tag {
+    font-family: report,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #3f6db4;
+}
+
+body {
+    font-family: report,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #3f6db4;
+}
+
+.button {
+    border-radius: 1rem;
+    background-color: #22a69a;
+    margin: 35px 20px 20px 20px;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1.10);
+}
+
+h1 {
+    font-family: report,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+form {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    border-radius: 1rem;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    margin: auto;
+    background: rgb(255,255,255);
+}
+
+.input:hover {
+    cursor:text;
+}
+
+.greeting {
+    font-size: 45px;
+    color: white;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.home {
+    width: 400px;
+    height: 300px;
+}
+
+.listcontainer {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 20px 20px 20px 20px;
+}
+
+.callout {
+    margin: 20px 20px 20px 20px;
+    border-radius: 1rem;
+}
+
+.top-bar {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    margin: 20px 20px 20px 20px;
+}
