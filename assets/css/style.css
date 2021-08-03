@@ -1,0 +1,57 @@
+.title {
+    font-family: dazzle-unicase, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #3f6db4;
+    font-size: 50px;
+}
+
+.tag {
+    font-family: report,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #3f6db4;
+}
+
+body {
+    font-family: report,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #3f6db4;
+}
+
+.button {
+    border-radius: 1rem;
+    background-color: #22a69a;
+}
+
+h1 {
+    font-family: report,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+/* form {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+} */
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.home {
+    width: 400px;
+    height: 300px;
+}
