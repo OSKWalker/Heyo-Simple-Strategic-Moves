@@ -1,4 +1,4 @@
-.title {
+/* .title {
     font-family: dazzle-unicase, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -7,15 +7,15 @@
 }
 
 .tag {
-    font-family: report,sans-serif;
-    font-weight: 300;
+    font-family: poiret-one,sans-serif;
+    font-weight: 400;
     font-style: normal;
     color: #3f6db4;
-}
+} */
 
 body {
-    font-family: report,sans-serif;
-    font-weight: 400;
+    font-family: poiret-one,sans-serif;
+    font-weight: 600;
     font-style: normal;
     background-color: #3f6db4;
 }
@@ -23,20 +23,20 @@ body {
 .button {
     border-radius: 1rem;
     background-color: #22a69a;
-    margin: 20px 20px 20px 20px;
+    margin: 10px 20px 10px 20px;
     font-size: 15px;;
 }
 
 .button:hover {
     cursor: pointer;
     transition: transform 150ms;
-    transform: scale(1.10);
+    transform: scale(1.05);
     background-color: #3f6db4;
 }
 
 h1 {
-    font-family: report,sans-serif;
-    font-weight: 400;
+    font-family: poiret-one,sans-serif;
+    font-weight: 600;
     font-style: normal;
     color: white;
 }
@@ -46,7 +46,7 @@ form {
     background: rgba(255, 255, 255, 0.35);
     margin: 20px 20px 20px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     align-content: space-around;
 }
@@ -55,10 +55,15 @@ form {
     border-radius: 1rem;
     width: 150px;
     height: 40px;
-    text-align: center;
     margin: auto;
     background: rgb(255,255,255);
+    box-shadow: none;
 }
+
+.select {
+    margin: auto;
+}
+
 
 .input:hover {
     cursor:text;
@@ -67,12 +72,16 @@ form {
 .greeting {
     font-size: 45px;
     color: white;
+    padding: 10px 10px 10px 20px;
 }
 
 .top-bar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
 }
 
 img {
@@ -92,17 +101,9 @@ img {
     margin: 20px 20px 20px 20px;
 }
 
-.callout {
-    margin: 20px 20px 20px 20px;
-    border-radius: 1rem;
-}
-
-.top-bar {
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.95);
-    margin: 20px 20px 20px 20px;
-    display: flex;
-    justify-content: space-between;
+#favorites {
+    margin-left: auto;
+    font-size: 20px;
 }
 
 .mainmenu {
@@ -126,7 +127,7 @@ ul {
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.35);
     margin: 0px 20px 20px 20px;
-    height: 700px;
+    height: auto;
     width: 45%;
     text-align: center;
     font-size: 30px;
@@ -172,9 +173,9 @@ a {
 .column {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
-    margin-top: 20px;
+    margin-top: 50px;
     width: 100%;
 }
 
@@ -182,13 +183,42 @@ a {
     width: 750px;
     height: 400px;
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-    font-family: report,sans-serif;
+    font-family: century-gothic,sans-serif;
     font-weight: 400;
     font-style: normal;
     color: black;
+    padding-top: 20px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 1rem;
+}
 
+.callout:hover{
+    background-color: rgb(176,221,218, 0.65);
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1.01);
+}
+
+.hometag {
+    display: flex;
+    flex-direction: row;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+}
+
+#search_categories {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    margin: auto;
+    background: rgb(255,255,255);
+    font-size: 20px;
+    border: none;
+    border-radius: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -200,7 +230,7 @@ a {
 }
   
 ::-webkit-scrollbar-thumb {
-    background-color: #22a69a;    /* color of the scroll thumb */
+    background-color: rgb(255,255,255,0.8);    /* color of the scroll thumb */
     border-radius: 1rem;       /* roundness of the scroll thumb */
-    border: 3px solid rgb(255,255,255,0.6);  /* creates padding around scroll thumb */
+    border: 3px solid rgb(255,255,255,0.5);  /* creates padding around scroll thumb */
 }
