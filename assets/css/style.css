@@ -23,6 +23,13 @@ body {
 .button {
     border-radius: 1rem;
     background-color: #22a69a;
+    margin: 35px 20px 20px 20px;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: transform 150ms;
+    transform: scale(1.10);
 }
 
 h1 {
@@ -32,12 +39,32 @@ h1 {
     color: white;
 }
 
-/* form {
-    width: 70%;
+form {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 20px 20px 20px 20px;
     display: flex;
-    flex-direction: row;
-    align-self: center;
-} */
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    border-radius: 1rem;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    margin: auto;
+    background: rgb(255,255,255);
+}
+
+.input:hover {
+    cursor:text;
+}
+
+.greeting {
+    font-size: 45px;
+    color: white;
+}
 
 .top-bar {
     display: flex;
@@ -54,4 +81,21 @@ img {
 .home {
     width: 400px;
     height: 300px;
+}
+
+.listcontainer {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 20px 20px 20px 20px;
+}
+
+.callout {
+    margin: 20px 20px 20px 20px;
+    border-radius: 1rem;
+}
+
+.top-bar {
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    margin: 20px 20px 20px 20px;
 }
