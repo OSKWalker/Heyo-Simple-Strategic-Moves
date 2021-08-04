@@ -1,5 +1,5 @@
 //variable definitions
-const apiKey = "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b";
+const apiKey = "";
 const apiZipCodeHost =  "zipcodebase-zip-code-search.p.rapidapi.com";
 const apiRealEstateHost = "us-real-estate.p.rapidapi.com";
 
