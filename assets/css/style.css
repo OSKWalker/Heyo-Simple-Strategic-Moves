@@ -1,3 +1,26 @@
+/* Set the size of the div element that contains the map */
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+  .listing{
+    padding: 5px;
+    background-color: #ffffff;
+    border: 2px solid ;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 10px;
+  }
+
+  .saved{
+    color:red;
+  }
+
+  .notsaved{
+    color:gray;
+  }
 /* .title {
     font-family: dazzle-unicase, sans-serif;
     font-weight: 400;
