@@ -159,7 +159,8 @@ function displayProperty(data){
                 <div class="property-review"><h3>${beds}bds/${baths}bath</h3></div>
                 <div class="property-address">${addressline}</div>
                 <div class="property-city">${city},${state_code} ${postal_code}</div>
-                <div class="property-list-date">Listing Date: ${moment(list_date).format("YYYY-MM-DD")}
+                <div class="property-county"><em>${county} County </em></div>
+                <div class="property-list-date">List Date: ${moment(list_date).format("YYYY-MM-DD")}
                 </div>
                 <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
             </div>
