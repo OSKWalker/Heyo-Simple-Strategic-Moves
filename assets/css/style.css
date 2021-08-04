@@ -1,6 +1,6 @@
 /* Set the size of the div element that contains the map */
 #map {
-    height: 400px;
+    height: 500px;
     /* The height is 400 pixels */
     width: 100%;
     /* The width is the width of the web page */
@@ -107,10 +107,17 @@ form {
     justify-content: space-between;
 }
 
-img {
+.top-bar img {
     width: 300px;
     height: 100px;
     margin-right: 20px;
+}
+
+.callout img{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    display: block !important;
+    padding-right: 20px;
 }
 
 .home {
