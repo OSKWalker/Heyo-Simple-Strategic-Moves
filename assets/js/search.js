@@ -1,9 +1,16 @@
+//variable definitions
+const apiKey = "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b";
+const apiZipCodeHost =  "zipcodebase-zip-code-search.p.rapidapi.com";
+const apiRealEstateHost = "us-real-estate.p.rapidapi.com";
+
 
 var srch_zipcodeEl ='30043';// document.querySelector('#zipcode');
 var srch_resultsOutput = document.getElementById('search-results');
 
 let srch_listingFavorites = [];
 let srch_searchFavorities = [];
+let srch_latlng = [];
+
 
 var Property = {
     zipcode: 30043,
@@ -27,14 +34,36 @@ function getZipCode(event){
 
     //get zipcode
     let zipCode = event.target;
-    console.log(event);
 };
 
 //add event listeners
 function srch_addEventListeners(){
   
-    srch_zipcodeEl.addEventListener('submit', getZipCode);
-    $("#property-results").on("click",displayPropertyDetail);
+    //srch_zipcodeEl.addEventListener('submit', getZipCode);
+    //$("#property-results").on("click",displayPropertyDetail);
+
+    $("#property-results").on("click",".fa-heart",function(event){
+
+        // get letter from clicked letter button's `data-letter` attribute and use it for display
+        var listingid = $(event.target).attr('data-favorite-property');
+        var propertyid = $(event.target).attr('data-favorite-listing');
+        var favtoggle = $(event.target).attr('data-color');
+        
+
+        if($(event.target).hasClass("notsaved"))
+        {
+            $(event.target).removeClass('notsaved');
+            $(event.target).addClass('saved');
+        }
+        else
+        {
+            $(event.target).removeClass('saved');
+            $(event.target).addClass('notsaved');
+        }
+  
+        srch_listingFavorites.push(listingid);
+        localStorage.setItem("listingFavorites",JSON.stringify(srch_listingFavorites));
+    })
 
 };
 
@@ -128,18 +157,19 @@ function displayProperty(data){
         //console.log(primary_photo);
 
         $("#property-results").append(`
-        <div class="listing" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
+        <div class="listing " data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
             <div class="property-header"><img src="${primary_photo}"><img></div>
             <div class="property-price"><h2>$${list_price}</h2></div>
-            <div class="property-address"><a data-open="reveal_modal_${property_id}">${addressline}</a></div>
+            <div class="property-address"><a data-open = "reveal_modal">${addressline}</a></div>
             <div class="property-city">${city},${state_code} ${postal_code}</div>
             <div class="property-list-date">Listing Date: ${list_date}</div>
+            <i class="fas fa-heart notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i>
         </div>
         
-       <div class="reveal" id = "reveal_modal_${property_id}" data-reveal>
+       <div class="reveal" id = "reveal_modal" data-reveal>
         <h2>Property Header</h2>
         <p>${status}</p>
-    </div>`
+       </div>`
     )
         
        displayPropertyDetail(property_id, status)
@@ -195,7 +225,7 @@ var getForSaleProperties = function(){
     var location = Property.zipcode;
 
   
-    fetch("https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=5&state_code="+state_code+"&city="+city+"&location="+location+"&sort=newest", {
+    fetch("https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=3&state_code="+state_code+"&city="+city+"&location="+location+"&sort=newest", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": apiKey,
@@ -221,7 +251,7 @@ $("#modalLauncher").on("click",function (e) {
 });
 
 function init(){
-    //srch_addEventListeners();
+    srch_addEventListeners();
     getZipCodeJSON("30043");
 }
 
