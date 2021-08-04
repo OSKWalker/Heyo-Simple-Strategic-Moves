@@ -2,81 +2,179 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heyo Strategic Move</title>
-    <link rel="stylesheet" href="assets/foundations/css/foundation.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heyo!</title>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/ful4eit.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ful4eit.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
 <body>
 
-    <div class="grid-container">
-      <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-          <h1>Welcome to Heyo</h1>
-        </div>
-      </div>
+<div class="top-bar" id="realEstateMenu">
+  <img src="./images/logo2.png" width="50" height="40" alt="logo image" >
+  <button type= "Saved Homes" class="button" id="favorites" style="float: right;">Favorite Homes <i class="fas fa-heart"></i></button>
+</div>
 
-      <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-          <div class="primary callout">
-            <h5>Enter your new destination</h5>
-            <form>
-              <div class="grid-x grid-padding-x">
-                <div class="large-12 cell" >
-                  <input type="text" placeholder="zipcode" id="zipcode"/>
-                </div>
-              </div>
-            </form>
+<form id="form"> 
+  <div class="greeting">Lets find your dream home!</div>
+  <input type="text" placeholder="Zip Code" class="zip">
+  <div class="select">
+    <select name="search_categories" id="search_categories">
+       <option value="1" selected="selected">Distance</option>
+       <option value="2">5 Miles</option>
+       <option value="3">10 Miles</option>
+       <option value="4">15 Miles</option>
+     </select>
+  </div>
+  <div class="select">
+    <select name="search_categories" id="search_categories">
+       <option value="1" selected="selected">Bedrooms</option>
+       <option value="2">1</option>
+       <option value="3">2</option>
+       <option value="4">3</option>
+     </select>
+  </div>
+  <div class="select">
+    <select name="search_categories" id="search_categories">
+       <option value="1" selected="selected">Bathrooms</option>
+       <option value="2">1</option>
+       <option value="3">1.5</option>
+       <option value="4">2</option>
+     </select>
+  </div>
+  <div class="select">
+    <select name="search_categories" id="search_categories">
+       <option value="1" selected="selected">Property Type</option>
+       <option value="2">House</option>
+       <option value="3">Condo</option>
+       <option value="4">Apartment</option>
+     </select>
+  </div>
+  <div class="select">
+    <select name="search_categories" id="search_categories">
+       <option value="1" selected="selected">Price Range</option>
+       <option value="2">$0- $149,000</option>
+       <option value="3">$150,000- $249,000</option>
+       <option value="4">$250,000= $349,000</option>
+     </select>
+  </div>
+  <button type="submit" class="button">Search <i class="fas fa-search"></i></button>
+</form>
+
+<div class="listcontainer">
+  <div class="column">
+    <div class="map" id="map">Google Map API</div>
+    <div id="list" div style="height:700px;width:800px;overflow:auto;background-color:(#3f6db4, 0.5);color:white;;font-family:sans-serif;padding:10px;">
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
+          </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
           </div>
         </div>
       </div>
-
-      <div class="grid-x grid-padding-x">
-        <div class="large-6 medium-6 cell">
-          <div class="primary callout" id="property-results">
-           
-            
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
           </div>
-        </div>
-
-
-        <div class="large-6 medium-6">
-            <div id="map"><p></p></div>
-        </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
+          </div>
       </div>
-
-      <div class="modals"></div>
-
-      <!--- List Property Detail Modal-->
-
-      <!--
-      <h2>Reveal Modal in Modal Example</h2>
-      <p><a data-open="reveal_modal">Click here to open modal</a></p>
-
-      <div class = "reveal" id = "reveal_modal22" data-reveal>
-         <h2>Foundation</h2>
-         <p>Foundation is a family of responsive front-end frameworks that make
-            it easy to design beautiful  responsive websites, apps and emails
-            that look amazing on any device.
-         </p>
-         <a class = "button" data-toggle = "reveal_modal1">Click here to open another modal!</a>
-
-         <button class = "close-button" data-close aria-label = "Close reveal" type = "button">
-            <span aria-hidden = "true">×</span>
-         </button>
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
+          </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
+          </div>
       </div>
-
-      <div class = "reveal" id = "reveal_modal1" data-reveal>
-         <h2>This is another modal!!!</h2>
-         <p>Foundation is semantic, readable, flexible, and completely customizable.</p>
-
-         <button class = "close-button" data-close aria-label = "Close reveal" type = "button">
-            <span aria-hidden = "true">×</span>
-         </button>
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
+          </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
+          </div>
       </div>
-    -->
-</body>
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
+          </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
+          </div>
+      </div>
+      <div>
+        <div class="callout">
+          <div class="hometag">
+            <p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fhomesfeed.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fadorable-cool-wonderful-nice-amenity-rich-craftsman-plan-small-footprint-and-huge-with-nice-modern-design-and-has-green-grass.jpg&f=1&nofb=1" class="home"></p>
+          </div>
+          <div class="details">
+            <p class="lead">$500,000</p>
+            <p class="subheader">5 Bed/ 3.5 Bath</p>
+            <p> Atlanta, Georgia</p>
+            <p> 1234 Street Road </p>
+            <p> 2,500 sqft</p>
+            <button class="button" id="favoritessaved">Love It <i class="fas fa-heart"></i></button>
+            <button class="button">Share It <i class="fas fa-share-alt"></i></button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="./assets/js/map.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>
