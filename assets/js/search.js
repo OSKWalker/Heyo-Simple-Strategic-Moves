@@ -4,8 +4,9 @@ const apiZipCodeHost =  "zipcodebase-zip-code-search.p.rapidapi.com";
 const apiRealEstateHost = "us-real-estate.p.rapidapi.com";
 
 
-var srch_zipcodeEl ='30043';// document.querySelector('#zipcode');
+var srch_zipcodeEl = document.querySelector('#zip');
 var srch_resultsOutput = document.getElementById('search-results');
+var srch_button = $("input[type='button'");
 
 let srch_listingFavorites = [];
 let srch_searchFavorities = [];
@@ -23,37 +24,51 @@ var Property = {
     state_code: '',
 }
 
+function searchProperty(event){
+    event.preventDefault();
+
+    //get zipcode
+    var zipCode = $("#zip").val();
+    getZipCodeJSON(zipCode);
+}
+
+function setListingFavorites(event){
+    // get letter from clicked letter button's `data-letter` attribute and use it for display
+    var listingid = $(event.target).attr('data-favorite-property');
+    var propertyid = $(event.target).attr('data-favorite-listing');
+    var favtoggle = $(event.target).attr('data-color');
+    
+
+    if($(event.target).hasClass("notsaved"))
+    {
+        $(event.target).removeClass('notsaved');
+        $(event.target).addClass('saved');
+    }
+    else
+    {
+        $(event.target).removeClass('saved');
+        $(event.target).addClass('notsaved');
+    }
+
+    srch_listingFavorites.push(listingid);
+    localStorage.setItem("listingFavorites",JSON.stringify(srch_listingFavorites));
+}
+
 
 //add event listeners
 function srch_addEventListeners(){
   
-    //srch_zipcodeEl.addEventListener('submit', getZipCode);
+   // srch_zipcodeEl.addEventListener('submit', getZipCode);
+    $('#list_search').on("click",searchProperty);
+
     //$("#property-results").on("click",displayPropertyDetail);
 
-    $("#list").on("click",".fa-heart",function(event){
-
-        // get letter from clicked letter button's `data-letter` attribute and use it for display
-        var listingid = $(event.target).attr('data-favorite-property');
-        var propertyid = $(event.target).attr('data-favorite-listing');
-        var favtoggle = $(event.target).attr('data-color');
-        
-
-        if($(event.target).hasClass("notsaved"))
-        {
-            $(event.target).removeClass('notsaved');
-            $(event.target).addClass('saved');
-        }
-        else
-        {
-            $(event.target).removeClass('saved');
-            $(event.target).addClass('notsaved');
-        }
-  
-        srch_listingFavorites.push(listingid);
-        localStorage.setItem("listingFavorites",JSON.stringify(srch_listingFavorites));
-    })
+    $("#list").on("click",".fa-heart",setListingFavorites)
 
 };
+
+
+
 
 //get listing/property favorites
 function srch_getListingFavorites(){
@@ -137,8 +152,7 @@ function displayProperty(data){
 
         var primary_photo = '';
 
-        console.log(p?.primary_photo?.href);
-
+        //set property if photo exists
         if(p?.primary_photo?.href != undefined)
         {
            primary_photo = p.primary_photo.href;
@@ -241,9 +255,7 @@ var getForSaleProperties = function(){
 };
 
 function init(){
-    srch_addEventListeners();
-    getZipCodeJSON("30043");
-    
+    srch_addEventListeners();   
 }
 
 init();
