@@ -1,5 +1,5 @@
 //variable definitions
-const apiKey = "";
+const apiKey = "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b";
 const apiZipCodeHost =  "zipcodebase-zip-code-search.p.rapidapi.com";
 const apiRealEstateHost = "us-real-estate.p.rapidapi.com";
 
@@ -24,25 +24,13 @@ var Property = {
 }
 
 
-
-function getZipCode(event){
-
-    console.log("h");
-
-    //handle
-    event.preventDefault();
-
-    //get zipcode
-    let zipCode = event.target;
-};
-
 //add event listeners
 function srch_addEventListeners(){
   
     //srch_zipcodeEl.addEventListener('submit', getZipCode);
     //$("#property-results").on("click",displayPropertyDetail);
 
-    $("#property-results").on("click",".fa-heart",function(event){
+    $("#list").on("click",".fa-heart",function(event){
 
         // get letter from clicked letter button's `data-letter` attribute and use it for display
         var listingid = $(event.target).attr('data-favorite-property');
@@ -149,37 +137,40 @@ function displayProperty(data){
 
         var primary_photo = '';
 
-        if(p.hasOwnProperty('primary_photo'))
+        console.log(p?.primary_photo?.href);
+
+        if(p?.primary_photo?.href != undefined)
         {
-            primary_photo = p.primary_photo.href;
+           primary_photo = p.primary_photo.href;
+            
         }
 
-        //console.log(primary_photo);
+        srch_latlng.push({latitude,longitude});
 
-        $("#property-results").append(`
-        <div class="listing " data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
-            <div class="property-header"><img src="${primary_photo}"><img></div>
-            <div class="property-price"><h2>$${list_price}</h2></div>
-            <div class="property-address"><a data-open = "reveal_modal">${addressline}</a></div>
-            <div class="property-city">${city},${state_code} ${postal_code}</div>
-            <div class="property-list-date">Listing Date: ${list_date}</div>
-            <i class="fas fa-heart notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i>
-        </div>
-        
-       <div class="reveal" id = "reveal_modal" data-reveal>
-        <h2>Property Header</h2>
-        <p>${status}</p>
-       </div>`
+
+        $("#list").append(`
+        <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
+           <div >
+                <img class= "list-details" src="${primary_photo}"><img>
+            </div>
+            <div class="details">
+                <div class="property-price"><h2>$${list_price}</h2></div>
+                <div class="property-review"><h3>${beds}bds/${baths}bath</div>
+                <div class="property-address">${addressline}</div>
+                <div class="property-city">${city},${state_code} ${postal_code}</div>
+                <div class="property-list-date">Listing Date: ${list_date}</div>
+                <i class="fas fa-heart notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i>
+                <button class="button">Share It <i class="fas fa-share-alt"></i></button>     
+            </div>
+      </div>`
     )
-        
+        //display property detatil
        displayPropertyDetail(property_id, status)
-
 
     });
 }
 
 function displayPropertyDetail(property_id, status){
-    console.log("detail");
 
   $('.modals').append( ` <div class="reveal" id="reveal_modal_${property_id}" data-reveal>
         <h2>Property Header</h2>
@@ -187,6 +178,8 @@ function displayPropertyDetail(property_id, status){
     </div>
    `);
 }
+
+
 
 //ZIPCODE SEARCH
 var getZipCodeJSON = function(zipcode){
@@ -209,7 +202,6 @@ var getZipCodeJSON = function(zipcode){
             Property.state = data.results[zipcode][0].state;
             Property.state_code = data.results[zipcode][0].state_code;  
             
-           // console.log("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes="+zipcode+"&country=US");
             getForSaleProperties();
          });
         } else {
@@ -225,7 +217,7 @@ var getForSaleProperties = function(){
     var location = Property.zipcode;
 
   
-    fetch("https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=3&state_code="+state_code+"&city="+city+"&location="+location+"&sort=newest", {
+    fetch("https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=5&state_code="+state_code+"&city="+city+"&location="+location+"&sort=newest", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": apiKey,
@@ -246,14 +238,10 @@ var getForSaleProperties = function(){
 
 };
 
-$("#modalLauncher").on("click",function (e) {
-    $('#myModal').foundation('reveal', 'open');
-});
-
 function init(){
     srch_addEventListeners();
     getZipCodeJSON("30043");
+    
 }
 
 init();
-//*/
