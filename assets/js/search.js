@@ -36,7 +36,6 @@ function setListingFavorites(event){
     // get letter from clicked letter button's `data-letter` attribute and use it for display
     var listingid = $(event.target).attr('data-favorite-property');
     var propertyid = $(event.target).attr('data-favorite-listing');
-    var favtoggle = $(event.target).attr('data-color');
     
 
     if($(event.target).hasClass("notsaved"))
@@ -181,7 +180,11 @@ function displayProperty(data){
       </div>`
     )
         //display property detatil
-       displayPropertyDetail(property_id, status)
+        displayPropertyDetail(property_id, status)
+
+        //place property on map
+        eqfeed_callback(srch_latlng);
+
 
     });
 }
