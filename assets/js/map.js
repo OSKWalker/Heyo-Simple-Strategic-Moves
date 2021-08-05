@@ -1,9 +1,13 @@
 let map;
+let mp_centerLng = -83.951859;
+let mp_centerLat = 33.972199;
+const mp_Results = [
+  { lat: 34.041104, lng: -84.044093 },
+  { lat: 34.038422, lng: -84.000473 },
+  { lat: 34.007895, lng: -83.899684 },
+];
 // Initialize and add the map
 function initMap() {
-  let mp_centerLng = -83.951859;
-  let mp_centerLat = 33.972199;
-
   /*
   // The location of Uluru
   const uluru = { lat: 41.8755616, lng: -87.6244212 };
@@ -17,11 +21,6 @@ function initMap() {
     B: { lat: 34.038422, lng: -84.000473 },
     C: { lat: 34.007895, lng: -83.899684 },
   };*/
-  const results = [
-    { lat: 34.041104, lng: -84.044093 },
-    { lat: 34.038422, lng: -84.000473 },
-    { lat: 34.007895, lng: -83.899684 },
-  ];
 
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
@@ -34,7 +33,7 @@ function initMap() {
   });
   console.log(marker);*/
 
-  eqfeed_callback(results);
+  eqfeed_callback(mp_Results);
 }
 /*
 ("AIzaSyATFEudevkKspVTBdb - F7kwSoH__uxnFtw");*/
@@ -42,12 +41,14 @@ function initMap() {
 // Loop through the results array and place a marker for each
 // set of coordinates.
 const eqfeed_callback = function (results) {
+  const image = "./assets/images/img.png";
   results.forEach((element) => {
     console.log(element);
     const latLng = new google.maps.LatLng(element.lat, element.lng);
     new google.maps.Marker({
       position: latLng,
       map: map,
+      icon: image,
     });
   });
 };

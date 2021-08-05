@@ -176,5 +176,10 @@
     <script>
       $(document).foundation();
     </script>
+     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRglcBK4G9BXwMn-eGs8T4Gjt46hWRUOc&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
   </body>
 </html>
