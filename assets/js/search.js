@@ -29,7 +29,23 @@ function searchProperty(event){
 
     //get zipcode
     var zipCode = $("#zip").val();
+
+    console.log("inside");
+
+    //change listing background css
+    displayListingBackgroundCSS();
+
+    //search zipcode
     getZipCodeJSON(zipCode);
+}
+
+function displayListingBackgroundCSS(){
+  
+    console.log("inside");
+    $("body").removeClass("body").addClass("listing-body");
+    $(".greeting").remove();
+    $(".listcontainer").show();
+
 }
 
 function setListingFavorites(event){
@@ -213,6 +229,8 @@ var getZipCodeJSON = function(zipcode){
     .then(function (response) {
         if (response.ok) {
         response.json().then(function (data) {
+            console.log("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes="+zipcode+"&country=US")
+            console.log(data);
             Property.zipcode = data.results[zipcode][0].postal_code;
             Property.city = data.results[zipcode][0].city;
             Property.country_code = data.results[zipcode][0].country_code;
