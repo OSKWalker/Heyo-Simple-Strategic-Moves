@@ -29,14 +29,29 @@ function searchProperty(event){
 
     //get zipcode
     var zipCode = $("#zip").val();
+
+    console.log("inside");
+
+    //change listing background css
+    displayListingBackgroundCSS();
+
+    //search zipcode
     getZipCodeJSON(zipCode);
+}
+
+function displayListingBackgroundCSS(){
+  
+    console.log("inside");
+    $("body").removeClass("body").addClass("listing-body");
+    $(".greeting").remove();
+    $(".listcontainer").show();
+
 }
 
 function setListingFavorites(event){
     // get letter from clicked letter button's `data-letter` attribute and use it for display
     var listingid = $(event.target).attr('data-favorite-property');
     var propertyid = $(event.target).attr('data-favorite-listing');
-    var favtoggle = $(event.target).attr('data-color');
     
 
     if($(event.target).hasClass("notsaved"))
@@ -181,7 +196,11 @@ function displayProperty(data){
       </div>`
     )
         //display property detatil
-       displayPropertyDetail(property_id, status)
+        displayPropertyDetail(property_id, status)
+
+        //place property on map
+        eqfeed_callback(srch_latlng);
+
 
     });
 }
@@ -210,6 +229,8 @@ var getZipCodeJSON = function(zipcode){
     .then(function (response) {
         if (response.ok) {
         response.json().then(function (data) {
+            console.log("https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes="+zipcode+"&country=US")
+            console.log(data);
             Property.zipcode = data.results[zipcode][0].postal_code;
             Property.city = data.results[zipcode][0].city;
             Property.country_code = data.results[zipcode][0].country_code;
