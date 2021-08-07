@@ -11,7 +11,7 @@ function initMap() {
 
 // Loop through the results array and place a marker for each
 // set of coordinates.
-const eqfeed_callback = function (mp_results) {
+const setMarkers = function (mp_results) {
   const mp_image = {
     url: "./assets/images/img.png",
     size: new google.maps.Size(20, 32),
@@ -23,7 +23,7 @@ const eqfeed_callback = function (mp_results) {
     new google.maps.Marker({
       position: latLng,
       map: mp_map,
-      icon: mp_image,
+      icon: mp_image.url,
     });
   });
 };
