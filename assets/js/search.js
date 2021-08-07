@@ -142,9 +142,7 @@ function displayProperty(data) {
       primary_photo = p.primary_photo.href;
     }
 
-    srch_latlng.push({ latitude, longitude });
-
-    $("#list").append(`
+    let details = `
         <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
            <div >
                 <img class= "list-details" src="${primary_photo}"><img>
@@ -161,7 +159,11 @@ function displayProperty(data) {
                 </div>
                 <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
             </div>
-      </div>`);
+      </div>`;
+
+    srch_latlng.push({ latitude, longitude, details });
+
+    $("#list").append(details);
     //display property detatil
     displayPropertyDetail(property_id, status);
 
