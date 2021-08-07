@@ -12,18 +12,14 @@ function initMap() {
 // Loop through the results array and place a marker for each
 // set of coordinates.
 const setMarkers = function (mp_results) {
-  const mp_image = {
-    url: "./assets/images/img.png",
-    size: new google.maps.Size(20, 32),
-    origin: new google.map.Point(0, 0),
-    anchor: new google.maps.Point(0, 32),
-  };
+  const mp_image = "./assets/images/map-marker-icon.png";
+
   mp_results.forEach((element) => {
     const latLng = new google.maps.LatLng(element.latitude, element.longitude);
     new google.maps.Marker({
       position: latLng,
       map: mp_map,
-      icon: mp_image.url,
+      icon: mp_image,
     });
   });
 };
