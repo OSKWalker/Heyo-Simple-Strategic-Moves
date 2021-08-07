@@ -196,10 +196,11 @@ ul {
 .map {
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.35);
-    margin: auto;
-    height: auto;
+    margin: 0px;
+    height: 100%;
+    width: auto;
     width: fit-content;
-    text-align: center;
+    display: block;
     font-size: 30px;
     color: white;
 }
