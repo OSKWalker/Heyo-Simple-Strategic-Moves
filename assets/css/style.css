@@ -138,9 +138,13 @@ form {
 }
 
 .greeting {
-    font-size: 55px;
-    font-weight: 700;
+    font-size: 75px;
+    font-family: century-gothic, sans-serif;
+    font-weight: 500;
+    font-style: normal;
     color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 10px 10px 10px 20px;
     text-align: center;
     letter-spacing: 2px;
@@ -174,6 +178,8 @@ form {
 #favorites {
     margin-left: auto;
     font-size: 20px;
+    font-family: century-gothic, sans-serif;
+    font-weight: 400;
 }
 
 .mainmenu {
