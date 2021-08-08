@@ -38,9 +38,10 @@ function searchProperty(event) {
 }
 
 function displayListingBackgroundCSS() {
-  console.log("inside");
+
   $("body").removeClass("body").addClass("listing-body");
   $(".greeting").remove();
+  $(".dropdown").show();
   $(".listcontainer").show();
 }
 
