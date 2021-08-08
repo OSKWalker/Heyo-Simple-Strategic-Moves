@@ -116,7 +116,7 @@ function displayProperty(data) {
   //console.log(data);
   data.data.results.forEach((p) => {
     var list_date = p.list_date;
-    var list_price = p.list_price;
+    var list_price = p.list_price.toLocaleString();
     var listing_id = p.listing_id;
     var latitude = p.location.address.coordinate.lat;
     var longitude = p.location.address.coordinate.lon;
