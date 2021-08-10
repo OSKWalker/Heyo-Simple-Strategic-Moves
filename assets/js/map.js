@@ -56,8 +56,15 @@ const setMarkers = function (mp_results) {
       map: mp_map,
       icon: mp_image,
     });
-    google.maps.event.addListener(marker, "click", function (e) {
+    google.maps.event.addListener(marker, "mouseover", function (e) {
       mp_infowindow.open({
+        anchor: marker,
+        map,
+        shouldFocus: false,
+      });
+    });
+    google.maps.event.addListener(marker, "mouseleave", function (e) {
+      mp_infowindow.close({
         anchor: marker,
         map,
         shouldFocus: false,
