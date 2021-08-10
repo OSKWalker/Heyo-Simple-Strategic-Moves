@@ -436,6 +436,8 @@ a {
 }
 /* GoogleMaps-API generated class for infoWindows*/
 .gm-style-iw {
-  height: 150px !important;
-  width: 150px !important;
+  color: black;
+  font-family: century-gothic, sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }

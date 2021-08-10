@@ -46,9 +46,9 @@ const setMarkers = function (mp_results) {
   const mp_image = "./assets/images/map-marker-icon.png";
 
   mp_results.forEach((element) => {
-    const mp_contentString = element.details;
+    const mp_contentString = `<div><h3 id="listingPrice">$${element.list_price}</h3></div>`;
     const mp_infowindow = new google.maps.InfoWindow({
-      content: `${mp_contentString}`,
+      content: mp_contentString,
     });
     const latLng = new google.maps.LatLng(element.latitude, element.longitude);
     let marker = new google.maps.Marker({
