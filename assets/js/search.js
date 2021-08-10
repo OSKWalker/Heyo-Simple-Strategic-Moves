@@ -22,6 +22,8 @@ var Property = {
   state_code: "",
 };
 
+$("#favorites").hide();
+
 function searchProperty(event) {
   event.preventDefault();
 
@@ -38,6 +40,7 @@ function searchProperty(event) {
 function displayListingBackgroundCSS() {
 
   $("body").removeClass("body").addClass("listing-body");
+  $("#favorites").show();
   $(".greeting").remove();
   $(".dropdown").show();
   $(".listcontainer").show();
