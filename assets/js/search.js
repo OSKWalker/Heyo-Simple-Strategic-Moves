@@ -28,8 +28,6 @@ function searchProperty(event) {
   //get zipcode
   var zipCode = $("#zip").val();
 
-  console.log("inside");
-
   //change listing background css
   displayListingBackgroundCSS();
 
@@ -132,7 +130,8 @@ function displayProperty(data) {
     var status = p.status;
     var baths = p.description.baths;
     var beds = p.description.beds;
-    var sqft = p.description.lot_sqft;
+    var sqft = p.description.sqft;
+    var lot_sqft = p.description.log_sqft;
     var type = p.description.type;
     var year_built = p.description.year_built;
 
@@ -143,31 +142,35 @@ function displayProperty(data) {
       primary_photo = p.primary_photo.href;
     }
 
-    srch_latlng.push({ latitude, longitude });
 
-    $("#list").append(`
-        <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
-           <div >
-                <img class= "list-details" src="${primary_photo}"><img>
-            </div>
-            <div class="details">
-                <div class="property-price"><h2>$${list_price}</h2></div>
-                <div class="property-review"><h3>${beds}bds/${baths}bath</h3></div>
-                <div class="property-address">${addressline}</div>
-                <div class="property-city">${city},${state_code} ${postal_code}</div>
-                <div class="property-county"><em>${county} County </em></div>
-                <div class="property-list-date">List Date: ${moment(
-                  list_date
-                ).format("YYYY-MM-DD")}
+    srch_latlng.push({ latitude, longitude, list_price, listing_id, property_id, sqft, year_built, lot_sqft, beds, baths });
+
+    if(type === "single_family")
+    {
+        $("#list").append(`
+            <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
+            <div >
+                    <img class= "list-details" src="${primary_photo}"><img>
                 </div>
-                <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
-            </div>
-      </div>`);
-    //display property detatil
-    displayPropertyDetail(property_id, status);
+                <div class="details">
+                    <div class="property-price"><h2>$${list_price}</h2></div>
+                    <div class="property-review"><h3>${beds}bds/${baths}bath</h3></div>
+                    <div class="property-address">${addressline}</div>
+                    <div class="property-city">${city},${state_code} ${postal_code}</div>
+                    <div class="property-county"><em>${county} County </em></div>
+                    <div class="property-list-date">List Date: ${moment(
+                    list_date
+                    ).format("YYYY-MM-DD")}
+                    </div>
+                    <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
+                </div>
+        </div>`);
+        //display property detatil
+        displayPropertyDetail(property_id, status);
 
-    //place property on map
-    setMarkers(srch_latlng);
+        //place property on map
+        setMarkers(srch_latlng);
+    }
   });
 }
 
@@ -196,12 +199,7 @@ var getZipCodeJSON = function (zipcode) {
   ).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(
-          "https://zipcodebase-zip-code-search.p.rapidapi.com/search?codes=" +
-            zipcode +
-            "&country=US"
-        );
-        console.log(data);
+
         Property.zipcode = data.results[zipcode][0].postal_code;
         Property.city = data.results[zipcode][0].city;
         Property.country_code = data.results[zipcode][0].country_code;
@@ -224,7 +222,7 @@ var getForSaleProperties = function () {
   var location = Property.zipcode;
 
   fetch(
-    "https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=5&state_code=" +
+    "https://us-real-estate.p.rapidapi.com/for-sale?offset=0&limit=15&state_code=" +
       state_code +
       "&city=" +
       city +
