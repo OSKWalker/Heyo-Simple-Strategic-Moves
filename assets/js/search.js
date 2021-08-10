@@ -114,7 +114,7 @@ function srch_addEventListeners() {
 
 //get listing/property favorites
 function srch_getListingFavorites() {
-    //var html;
+    var ihtml = '';
 
     if (srch_listingFavorites === null) {
         $(".modal-content").html("You have no favorites saved");
@@ -124,10 +124,18 @@ function srch_getListingFavorites() {
         /** ADD LOGIC HERE TO RETURN SAVED LISTINGS   **/
         srch_listingFavorites.forEach((element) => {
              getPropertyListing(element);
+
+             if(ihtml.length == 0)
+             {
+               ihtml = element;
+             }
+             else{
+              ihtml += `<br>${element}</br>`;
+             }
         });
 
-        console.log(responseData)
-        $(".modal-content").html(html);
+       // console.log(responseData)
+        $(".modal-content").html(ihtml);
         document.getElementById("error-modal").classList.add(isVisible);
     }
 }
