@@ -147,7 +147,6 @@ form {
   display: flex;
   flex-direction: row;
   background: rgba(255, 255, 255);
-  display: flex;
   justify-content: flex-start;
 }
 
@@ -389,4 +388,41 @@ a {
 
 .modal p + p {
   margin-top: 1rem;
+}
+
+@media only screen and (max-width: 820px) {
+  .top-bar {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255);
+    justify-content: center;
+  }
+
+  #favorites {
+    align-self: flex-end;
+    font-size: 15px;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .callout {
+    width: auto;
+    height:min-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .map {
+    display: none;
+  }
 }
