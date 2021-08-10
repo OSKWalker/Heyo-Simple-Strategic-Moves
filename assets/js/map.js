@@ -63,12 +63,8 @@ const setMarkers = function (mp_results) {
         shouldFocus: false,
       });
     });
-    google.maps.event.addListener(marker, "mouseleave", function (e) {
-      mp_infowindow.close({
-        anchor: marker,
-        map,
-        shouldFocus: false,
-      });
+    google.maps.event.addListener(marker, "mouseout", function (e) {
+      mp_infowindow.close();
     });
   });
 };
