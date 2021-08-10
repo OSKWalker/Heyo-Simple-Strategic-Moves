@@ -38,7 +38,6 @@ function searchProperty(event) {
 }
 
 function displayListingBackgroundCSS() {
-
   $("body").removeClass("body").addClass("listing-body");
   $("#favorites").show();
   $(".greeting").remove();
@@ -148,12 +147,21 @@ function displayProperty(data) {
         primary_photo = "assets/images/default-no-image-1.png";
     }
 
+    srch_latlng.push({
+      latitude,
+      longitude,
+      list_price,
+      listing_id,
+      property_id,
+      sqft,
+      year_built,
+      lot_sqft,
+      beds,
+      baths,
+    });
 
-    srch_latlng.push({ latitude, longitude, list_price, listing_id, property_id, sqft, year_built, lot_sqft, beds, baths });
-
-    if(type === "single_family")
-    {
-        $("#list").append(`
+    if (type === "single_family") {
+      $("#list").append(`
             <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
             <div >
                     <img class= "list-details" src="${primary_photo}"><img>
@@ -165,17 +173,17 @@ function displayProperty(data) {
                     <div class="property-city">${city},${state_code} ${postal_code}</div>
                     <div class="property-county"><em>${county} County </em></div>
                     <div class="property-list-date">List Date: ${moment(
-                    list_date
+                      list_date
                     ).format("YYYY-MM-DD")}
                     </div>
                     <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
                 </div>
         </div>`);
-        //display property detatil
-        displayPropertyDetail(property_id, status);
+      //display property detatil
+      displayPropertyDetail(property_id, status);
 
-        //place property on map
-        setMarkers(srch_latlng);
+      //place property on map
+      setMarkers(srch_latlng);
     }
   });
 }
@@ -205,7 +213,6 @@ var getZipCodeJSON = function (zipcode) {
   ).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-
         Property.zipcode = data.results[zipcode][0].postal_code;
         Property.city = data.results[zipcode][0].city;
         Property.country_code = data.results[zipcode][0].country_code;

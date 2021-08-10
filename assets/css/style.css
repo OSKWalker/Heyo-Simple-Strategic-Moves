@@ -7,6 +7,14 @@
   /* The width is the width of the web page */
   margin-right: 10px;
 }
+/*Perhaps we could implement this if we get the map situation taken care of.#overview {
+  position: absolute;
+  left: 40px;
+  height: 175px;
+  width: 175px;
+  bottom: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}*/
 
 .listing {
   padding: 5px;
@@ -418,7 +426,7 @@ a {
 
   .callout {
     width: auto;
-    height:min-content;
+    height: min-content;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -427,4 +435,13 @@ a {
   .map {
     display: none;
   }
+}
+/* GoogleMaps-API generated class for infoWindows*/
+.gm-style-iw {
+  color: black;
+  font-family: century-gothic, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin: auto;
+  padding: auto;
 }
