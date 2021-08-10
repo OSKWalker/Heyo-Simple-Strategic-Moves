@@ -141,6 +141,9 @@ function displayProperty(data) {
     if (p?.primary_photo?.href != undefined) {
       primary_photo = p.primary_photo.href;
     }
+    else{
+        primary_photo = "assets/images/default-no-image-1.png";
+    }
 
 
     srch_latlng.push({ latitude, longitude, list_price, listing_id, property_id, sqft, year_built, lot_sqft, beds, baths });
