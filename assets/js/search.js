@@ -158,7 +158,7 @@ function displayProperty(data) {
             <div >
                     <img class= "list-details" src="${primary_photo}"><img>
                 </div>
-                <div class="details">
+                <div class="details"> 
                     <div class="property-price"><h2>$${list_price}</h2></div>
                     <div class="property-review"><h3>${beds}bds/${baths}bath</h3></div>
                     <div class="property-address">${addressline}</div>
