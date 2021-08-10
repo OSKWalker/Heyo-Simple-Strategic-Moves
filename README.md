@@ -30,28 +30,35 @@ WHEN I hover over the home on the map
 THEN I am given information about the listing on hover
 WHEN I click the heart icon on the listing
 THEN I can see that I have it favorited
+WHEN I scroll to view the listing
+THEN the map stays where it is 
+WHEN I have no favorites saved
+THEN I am alerted that I have no favorites saved
+WHEN a listing doesn't have an image
+THEN a default image is shown
 
 # Roles:
 
 **Front-end:**
-*Hannah McDonald
-*Yesica Tejada
-*Darrell Carter
+* Hannah McDonald
+* Yesica Tejada
+* Darrell Carter
+
 **Back-end:**
-*Erica Baity
-*Omar Walker
-*Darrell Carter
+* Erica Baity
+* Omar Walker
+* Darrell Carter
 
 
 # Technologies:
 
-*Semantic UI - Frontend
-*Foundation- Frontend
-*Adobe Fonts- Frontend
-*Javascript/jQuery - Backend
-*Google Maps API - Map display
-*Zipcodebase Zip Code Search API - Zipcode latitude and longitude filter
-*US Real Estate API - US MLS Listings
+* Semantic UI - Frontend
+* Foundation- Frontend
+* Adobe Fonts- Frontend
+* Javascript/jQuery - Backend
+* Google Maps API - Map display
+* Zipcodebase Zip Code Search API - Zipcode latitude and longitude filter
+* US Real Estate API - US MLS Listings
 
 
 # Wireframe:
@@ -64,26 +71,24 @@ First, we made a wireframe to visualize our goals for this site and how we wante
 
 # Screenshots:
 
-Desktop:
 ![Desktop Home Screenshot](./assets/images/DesktopScreenshot.png)
 ![Desktop Search Screenshot](./assets/images/DesktopScreenshot2.png)
 
-Mobile:
 ![Mobile Screenshot 1](./assets/images/MobileScreenshot.png)
 ![Mobile Screenshot 2](./assets/images/MobileScreenshot2.png)
 
 
 
 <ins> **Plans for future development:** </ins>
-*Clean-up site responsiveness & add map support to mobile site
-*Google map directions and route planning
-*Crowdfunding feature for home purchase
-*Enable property filtering 
-*Make map more interactive
-*Property/listing texting feature
-*Organizing favorites
-*User account creation
-*Enhance property results (eg. school system, crime rates, traffic, mortgage info)
+* Clean-up site responsiveness & add map support to mobile site
+* Google map directions and route planning
+* Crowdfunding feature for home purchase
+* Enable property filtering 
+* Make map more interactive
+* Property/listing texting feature
+* Organizing favorites
+* User account creation
+* Enhance property results (eg. school system, crime rates, traffic, mortgage info)
 
   
 # Installation:
