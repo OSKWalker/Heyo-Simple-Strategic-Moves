@@ -220,7 +220,16 @@ ul {
   display: none;
   flex-direction: row;
   justify-content: space-around;
+  position: relative; /*ebaity*/
 }
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
 
 div #list {
   background: rgba(255, 255, 255, 0.35);
@@ -355,7 +364,7 @@ a {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: var(--black);
+  background: #000000;
   cursor: pointer;
   visibility: hidden;
   opacity: 0;
@@ -364,7 +373,7 @@ a {
 
 .modal.is-visible {
   visibility: visible;
-  opacity: 1;
+  opacity: .88;
 }
 
 .modal-dialog {
@@ -372,7 +381,7 @@ a {
   max-width: 800px;
   max-height: 80vh;
   border-radius: 5px;
-  background: var(--white);
+  background: #ffffff;
   overflow: auto;
   cursor: default;
 }
