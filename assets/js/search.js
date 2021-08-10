@@ -38,7 +38,6 @@ function searchProperty(event) {
 }
 
 function displayListingBackgroundCSS() {
-
   $("body").removeClass("body").addClass("listing-body");
   $(".greeting").remove();
   $(".dropdown").show();
@@ -143,7 +142,9 @@ function displayProperty(data) {
       primary_photo = p.primary_photo.href;
     }
 
-    let details = `
+    srch_latlng.push({ latitude, longitude });
+
+    $("#list").append(`
         <div class="callout" data-open="reveal_modal_${property_id}" data-property-lon="${longitude}" data-property-lat="${latitude}" data-property-id="${property_id}" data-property-listing="${listing_id}">
            <div >
                 <img class= "list-details" src="${primary_photo}"><img>
@@ -160,11 +161,7 @@ function displayProperty(data) {
                 </div>
                 <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
             </div>
-      </div>`;
-
-    srch_latlng.push({ latitude, longitude, details });
-
-    $("#list").append(details);
+      </div>`);
     //display property detatil
     displayPropertyDetail(property_id, status);
 
