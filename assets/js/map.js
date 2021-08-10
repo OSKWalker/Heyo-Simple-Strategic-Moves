@@ -46,7 +46,7 @@ const setMarkers = function (mp_results) {
   const mp_image = "./assets/images/map-marker-icon.png";
 
   mp_results.forEach((element) => {
-    const mp_contentString = `<div><p id="listingPrice">$${element.list_price}</p></div>`;
+    const mp_contentString = `<div><h5 id="listingPrice">$${element.list_price}</h5><p id="bedroomBath">${element.beds}bds/${element.baths}baths</p><p id="squareFeet">${element.sqft} sq.ft.</p></div>`;
     const mp_infowindow = new google.maps.InfoWindow({
       content: mp_contentString,
     });
