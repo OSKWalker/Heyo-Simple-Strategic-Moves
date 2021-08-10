@@ -24,11 +24,35 @@ var Property = {
 
 $("#favorites").hide();
 
+const closeEls = document.querySelectorAll("[data-close]");
+const isVisible = "is-visible";
+ 
+for (const el of closeEls) {
+  el.addEventListener("click", function() {
+    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
+  });
+}
+
+
 function searchProperty(event) {
   event.preventDefault();
 
+  const isVisible = "is-visible";
   //get zipcode
   var zipCode = $("#zip").val();
+
+  if(zipCode == null || zipCode == "")
+  {
+      $(".modal-content").html("You must enter a zipcode to proceed with your search");
+      document.getElementById("error-modal").classList.add(isVisible);
+      return;
+  }
+  else if(isNaN(zipCode) || zipCode.length != 5)
+  {
+    $(".modal-content").html("You must enter a zipcode to proceed with your search");
+    document.getElementById("error-modal").classList.add(isVisible);
+    return;
+  }
 
   //change listing background css
   displayListingBackgroundCSS();
@@ -37,6 +61,7 @@ function searchProperty(event) {
   getZipCodeJSON(zipCode);
 }
 
+//format listings page
 function displayListingBackgroundCSS() {
   $("body").removeClass("body").addClass("listing-body");
   $("#favorites").show();
@@ -53,12 +78,15 @@ function setListingFavorites(event) {
   if ($(event.target).hasClass("notsaved")) {
     $(event.target).removeClass("notsaved");
     $(event.target).addClass("saved");
+    srch_listingFavorites.push(propertyid);
   } else {
     $(event.target).removeClass("saved");
     $(event.target).addClass("notsaved");
+    srch_listingFavorites = JSON.parse(localStorage.getItem("listingFavorites"));
+    let new_Listings = srch_listingFavorites.filter(element => (element != propertyid));
+    console.log(new_Listings);
   }
 
-  srch_listingFavorites.push(listingid);
   localStorage.setItem(
     "listingFavorites",
     JSON.stringify(srch_listingFavorites)
@@ -141,7 +169,7 @@ function displayProperty(data) {
 
     //set property if photo exists
     if (p?.primary_photo?.href != undefined) {
-      primary_photo = p.primary_photo.href;
+        primary_photo = p.primary_photo.href;
     }
     else{
         primary_photo = "assets/images/default-no-image-1.png";
@@ -176,7 +204,8 @@ function displayProperty(data) {
                       list_date
                     ).format("YYYY-MM-DD")}
                     </div>
-                    <i class="fas fa-heart fa-2x notsaved" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i><button class="button">Share It <i class="fas fa-share-alt"></i></button>     
+                    <div><i class="fas fa-heart notsaved top-right" data-color="gray" data-favorite-property="${property_id}" data-favorite-listing=${listing_id}"></i>
+                    <i class="fas fa-share-alt notsaved"></i></div>  
                 </div>
         </div>`);
       //display property detatil
