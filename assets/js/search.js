@@ -1,15 +1,22 @@
+$("#favorites").hide();
 //variable definitions
 const apiKey = "3250849d40msh424508de5e59da2p1f9931jsna5bef39d390b";
 const apiZipCodeHost = "zipcodebase-zip-code-search.p.rapidapi.com";
 const apiRealEstateHost = "us-real-estate.p.rapidapi.com";
+const isVisible = "is-visible";
 
 var srch_zipcodeEl = document.querySelector("#zip");
 var srch_resultsOutput = document.getElementById("search-results");
 var srch_button = $("input[type='button'");
+var html;
 
 let srch_listingFavorites = [];
 let srch_searchFavorities = [];
 let srch_latlng = [];
+let responseData = [];
+
+srch_listingFavorites = JSON.parse(localStorage.getItem("listingFavorites"));
+
 
 var Property = {
   zipcode: 30043,
@@ -22,10 +29,9 @@ var Property = {
   state_code: "",
 };
 
-$("#favorites").hide();
 
 const closeEls = document.querySelectorAll("[data-close]");
-const isVisible = "is-visible";
+
  
 for (const el of closeEls) {
   el.addEventListener("click", function() {
@@ -37,7 +43,6 @@ for (const el of closeEls) {
 function searchProperty(event) {
   event.preventDefault();
 
-  const isVisible = "is-visible";
   //get zipcode
   var zipCode = $("#zip").val();
 
@@ -72,8 +77,12 @@ function displayListingBackgroundCSS() {
 
 function setListingFavorites(event) {
   // get letter from clicked letter button's `data-letter` attribute and use it for display
-  var listingid = $(event.target).attr("data-favorite-property");
-  var propertyid = $(event.target).attr("data-favorite-listing");
+  var listingid = $(event.target).attr("data-favorite-listing");
+  var propertyid = $(event.target).attr("data-favorite-property");
+
+  if(srch_listingFavorites === null){
+      srch_listingFavorites = [];
+  }
 
   if ($(event.target).hasClass("notsaved")) {
     $(event.target).removeClass("notsaved");
@@ -83,63 +92,71 @@ function setListingFavorites(event) {
     $(event.target).removeClass("saved");
     $(event.target).addClass("notsaved");
     srch_listingFavorites = JSON.parse(localStorage.getItem("listingFavorites"));
+    
     let new_Listings = srch_listingFavorites.filter(element => (element != propertyid));
-    console.log(new_Listings);
+
+    srch_listingFavorites = new_Listings;
   }
 
-  localStorage.setItem(
-    "listingFavorites",
-    JSON.stringify(srch_listingFavorites)
-  );
+  localStorage.setItem("listingFavorites", JSON.stringify(srch_listingFavorites) );
 }
+
 
 //add event listeners
 function srch_addEventListeners() {
   // srch_zipcodeEl.addEventListener('submit', getZipCode);
   $("#list_search").on("click", searchProperty);
 
-  //$("#property-results").on("click",displayPropertyDetail);
+  $("#favorites").on("click",showFavorites);
 
   $("#list").on("click", ".fa-heart", setListingFavorites);
 }
 
 //get listing/property favorites
 function srch_getListingFavorites() {
-  srch_listingFavorites = JSON.parse(localStorage.getItem("listingFavorites"));
+    //var html;
 
-  if (srch_listingFavorite === null) {
-    srch_listingFavorite = [];
-  } else {
-    /** ADD LOGIC HERE TO RETURN SAVED LISTINGS   **/
-    srch_listingFavorite.forEach((element) => {
-      console.log(element);
-      /*$("#city-search-section-output").append(
-                `<div class="d-grid gap-2 city-search-hist"><button class="btn btn-secondary btn-lg" type="button" id="city-hist-btn" data-city-search="${element}">${element}</button></div>`
-            */
-    });
-  }
+    if (srch_listingFavorites === null) {
+        $(".modal-content").html("You have no favorites saved");
+        document.getElementById("error-modal").classList.add(isVisible);
+        return;
+    } else {
+        /** ADD LOGIC HERE TO RETURN SAVED LISTINGS   **/
+        srch_listingFavorites.forEach((element) => {
+             getPropertyListing(element);
+        });
+
+        console.log(responseData)
+        $(".modal-content").html(html);
+        document.getElementById("error-modal").classList.add(isVisible);
+    }
 }
 
-//return search favorites
-function srch_getSearchFavorites() {
-  srch_searchFavorities = JSON.parse(localStorage.getItem("searchFavorites"));
-
-  if (srch_searchFavorities === null) {
-    srch_searchFavorities = [];
-  } else {
-    /** ADD LOGIC HERE TO RETURN SAVED LISTINGS   **/
-    srch_searchFavorities.forEach((element) => {
-      console.log(element);
-      /*$("#city-search-section-output").append(
-                `<div class="d-grid gap-2 city-search-hist"><button class="btn btn-secondary btn-lg" type="button" id="city-hist-btn" data-city-search="${element}">${element}</button></div>`
-            */
-    });
-  }
+function showFavorites(event){
+    event.preventDefault();
+    srch_getListingFavorites();
 }
 
-function srch_saveListingFavorites() {}
+function getPropertyListing(propertyid){
 
-function srch_saveSearchFavorites() {}
+
+    fetch("https://us-real-estate.p.rapidapi.com/property-detail?property_id=" + propertyid, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": apiKey,
+		"x-rapidapi-host": apiRealEstateHost
+	    }
+    })
+    .then(function (response){
+        if(response.ok){
+            response.json().then(function (data){        
+                responseData.push(data);
+            })
+        }});
+
+    
+ 
+}
 
 function displayProperty(data) {
   //console.log(data);
