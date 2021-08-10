@@ -1,7 +1,8 @@
 let mp_map;
 let mp_overview;
 let mp_centerLng = -83.951859;
-let mp_centerLat = 33.972199; /*
+let mp_centerLat = 33.972199;
+/*
 const mp_OVERVIEW_DIFFERENCE = 5;
 const mp_OVERVIEW_MIN_ZOOM = 3;
 const mp_OVERVIEW_MAX_ZOOM = 10;*/
@@ -47,7 +48,7 @@ const setMarkers = function (mp_results) {
   mp_results.forEach((element) => {
     const mp_contentString = element.details;
     const mp_infowindow = new google.maps.InfoWindow({
-      content: mp_contentString,
+      content: `${mp_contentString}`,
     });
     const latLng = new google.maps.LatLng(element.latitude, element.longitude);
     let marker = new google.maps.Marker({

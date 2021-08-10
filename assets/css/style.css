@@ -403,3 +403,8 @@ a {
 .modal p + p {
   margin-top: 1rem;
 }
+/* GoogleMaps-API generated class for infoWindows*/
+.gm-style-iw {
+  height: 150px !important;
+  width: 150px !important;
+}
