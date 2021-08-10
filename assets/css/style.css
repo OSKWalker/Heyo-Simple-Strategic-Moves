@@ -5,6 +5,7 @@
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
+  margin-right: 10px;
 }
 /*Perhaps we could implement this if we get the map situation taken care of.#overview {
   position: absolute;
@@ -113,6 +114,7 @@ form {
   font-weight: 400;
   font-style: normal;
   text-align: center;
+  margin-top: 10px;
 }
 
 .zip {
@@ -213,7 +215,7 @@ ul {
 .listcontainer {
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.35);
-  margin: 20px 10px 10px 20px;
+  margin: 0px 10px 10px 20px;
   /* display: flex; */
   display: none;
   flex-direction: row;
@@ -251,7 +253,7 @@ a {
   flex-direction: row;
   justify-content: space-evenly;
   align-content: center;
-  margin-top: 50px;
+  margin-top: 25px;
   width: 100%;
   position: relative;
 }
