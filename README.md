@@ -13,29 +13,51 @@ Georgia Tech Coding Boot Camp Project #1
 
 # User Story: 
 
-**AS A busy professional new to the city
-I WANT to know which homes are close by 
-SO THAT I can decide how to plan my home viewing process**
+**AS A busy professional new to the city**
+
+
+**I WANT to know which homes are close by **
+
+
+**SO THAT I can decide how to plan my home viewing process**
 
 # Acceptance Criteria:
 
 GIVEN a real estate web page
+
 WHEN I search for a zip code
+
 THEN I am presented with homes for sale within that zip code
+
 WHEN I don't have a valid zip code
+
 THEN I am prompted to input a valid zip code
+
 WHEN I view the map
+
 THEN I am presented with icons for the location of each of the listed homes
+
 WHEN I hover over the home on the map
+
 THEN I am given information about the listing on hover
+
 WHEN I click the heart icon on the listing
+
 THEN I can see that I have it favorited
+
 WHEN I scroll to view the listing
+
 THEN the map stays where it is 
+
 WHEN I have no favorites saved
+
 THEN I am alerted that I have no favorites saved
+
 WHEN a listing doesn't have an image
+
 THEN a default image is shown
+
+
 
 # Roles:
 
