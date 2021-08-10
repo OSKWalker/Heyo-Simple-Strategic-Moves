@@ -143,13 +143,9 @@ form {
 }
 
 .greeting {
-  font-size: 75px;
-  font-family: century-gothic, sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-size: 55px;
+  font-weight: 700;
   color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
   padding: 10px 10px 10px 20px;
   text-align: center;
   letter-spacing: 2px;
@@ -159,7 +155,6 @@ form {
   display: flex;
   flex-direction: row;
   background: rgba(255, 255, 255);
-  display: flex;
   justify-content: flex-start;
 }
 
@@ -183,8 +178,6 @@ form {
 #favorites {
   margin-left: auto;
   font-size: 20px;
-  font-family: century-gothic, sans-serif;
-  font-weight: 400;
 }
 
 .mainmenu {
@@ -211,7 +204,8 @@ ul {
   height: 100%;
   width: auto;
   width: fit-content;
-  display: block;
+  position: sticky !important;
+  top: 0;
   font-size: 30px;
   color: white;
 }
@@ -229,7 +223,6 @@ ul {
 div #list {
   background: rgba(255, 255, 255, 0.35);
   border-radius: 1rem;
-  width: 50%;
 }
 
 .list {
@@ -260,6 +253,7 @@ a {
   align-content: center;
   margin-top: 50px;
   width: 100%;
+  position: relative;
 }
 
 .callout {
@@ -403,8 +397,40 @@ a {
 .modal p + p {
   margin-top: 1rem;
 }
-/* GoogleMaps-API generated class for infoWindows*/
-.gm-style-iw {
-  height: 150px !important;
-  width: 150px !important;
+
+@media only screen and (max-width: 820px) {
+  .top-bar {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255);
+    justify-content: center;
+  }
+
+  #favorites {
+    align-self: flex-end;
+    font-size: 15px;
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .callout {
+    width: auto;
+    height: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .map {
+    display: none;
+  }
 }
